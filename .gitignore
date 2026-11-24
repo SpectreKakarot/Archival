@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+*.log
+zip_states.txt
+Context.md
+list_zip_states.sh
