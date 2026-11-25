@@ -1,0 +1,19 @@
+# Path	Commit message
+CHANGELOG.md	docs: record plugin features in the unreleased changelog
+.github/workflows/release.yml	ci: package plugin ZIP and attach it to GitHub Releases
+NexusArchiveStateTool.md	docs: document plugin package installation and update archiving
+NexusArchiveStateTool.py	refactor: replace monolithic plugin with package structure
+NexusArchiveStateTool/__init__.py	refactor: register tool and install observer from package
+NexusArchiveStateTool/file_ops.py	feat: add archive moves deletes and previous ZIP archiving
+NexusArchiveStateTool/install.py	feat: observe native installs and archive older ZIP versions
+NexusArchiveStateTool/logging_utils.py	refactor: centralize plugin logging configuration
+NexusArchiveStateTool/models.py	refactor: define shared archive match model and supported formats
+NexusArchiveStateTool/scanning.py	feat: classify and report archive metadata states
+NexusArchiveStateTool/ui.py	feat: add archive management install selection and move progress UI
+README.md	docs: document plugin package features and development setup
+RELEASE.md	docs: add plugin packaging and release checklist
+TODO.md	docs: mark requested plugin improvements complete
+scripts/commit_messages.tsv	chore: map current plugin changes to per-file commit messages
+scripts/check_release_workflow.sh	test: validate release workflow in a Ruby Docker container
+scripts/write_commit_messages.sh	chore: add per-file commit message preview and staging helper
+test_nexus_archive_state_tool.py	test: cover package plugin install lifecycle and archive operations
