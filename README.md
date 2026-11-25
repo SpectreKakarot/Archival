@@ -1,28 +1,37 @@
 # Nexus Archive State Tool
 
-A Python `IPluginTool` for Fluorine Manager that classifies Nexus/Vortex download
-archives from their adjacent `.meta` files.
+A Python plugin package for Fluorine Manager: an `IPluginTool` that classifies
+Nexus/Vortex download archives from adjacent `.meta` files, plus an opt-in install
+observer for archiving the previous ZIP after a newer version installs.
 
 ## Features
 
 - Scans ZIP, 7z, and RAR archives in the active instance's Downloads folder.
 - Lists `downloaded` and `uninstalled` metadata states, including orphaned
   uninstalled sidecars with no matching archive.
+- Supports multi-select installation through Fluorine Manager's native installer;
+  each selected archive follows its normal installation flow. Before installation,
+  you can provide suggested mod names for all selected archives.
 - Writes `zip_states.txt` and activity logs to the Downloads folder.
 - Moves listed archive/metadata pairs or metadata-only sidecars to a chosen folder.
 - Optionally overwrites destination conflicts; overwrite is disabled by default.
 - Can permanently delete listed files after confirmation.
+- Can optionally move the previous ZIP and sidecar to `Downloads/Archive` after
+  installing a newer version of the same Nexus mod.
+- Shows per-item progress while moving listed files.
 
 ## Installation
 
-Copy `NexusArchiveStateTool.py` into Fluorine Manager's `plugins` directory, for
-example:
+Copy the entire `NexusArchiveStateTool` package directory into Fluorine Manager's
+`plugins` directory, for example:
 
 ```text
-~/.local/share/fluorine/bin/plugins/NexusArchiveStateTool.py
+~/.local/share/fluorine/bin/plugins/NexusArchiveStateTool/
 ```
 
-Restart Fluorine Manager and open the tool from its Tools menu.
+Restart Fluorine Manager and open the tool from its Tools menu. The optional update
+archive behavior is configured in Fluorine Manager's plugin settings for
+**NexusArchiveInstallObserver** and is disabled by default.
 
 ## Development
 
