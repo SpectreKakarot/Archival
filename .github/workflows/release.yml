@@ -1,0 +1,26 @@
+name: Release plugin ZIP
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release tag
+        uses: actions/checkout@v4
+
+      - name: Package plugin
+        run: |
+          test -f NexusArchiveStateTool/__init__.py
+          zip -r NexusArchiveStateTool.zip NexusArchiveStateTool \
+            -x '*/__pycache__/*' '*.pyc'
+
+      - name: Attach ZIP to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: NexusArchiveStateTool.zip
